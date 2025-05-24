@@ -3,14 +3,11 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-# Copie des fichiers de dépendances
-COPY package*.json ./
+# Copie de tous les fichiers nécessaires
+COPY . .
 
 # Installation des dépendances
 RUN npm install --omit=dev
-
-# Copie du code source
-COPY . .
 
 # Étape de production
 FROM node:18-alpine
